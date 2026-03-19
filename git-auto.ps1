@@ -3,7 +3,7 @@
 )
 
 # 日志设置
-$logDir = "log"
+$logDir = ".log"
 if (-not (Test-Path $logDir)) { New-Item -ItemType Directory -Path $logDir | Out-Null }
 $logFile = Join-Path $logDir ("git-auto_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".log")
 

@@ -8,9 +8,9 @@ config:
     forceDark: true
     effect: lightning
     hero:
-      name: Theme Plume
-      tagline: VuePress Next Theme
-      text: 一个简约的，功能丰富的 vuepress 文档&博客 主题
+      name: watersupis's docs
+      #tagline: VuePress Next Theme
+      text: 一个包含学习文档和博客的神奇网站
       actions:
         -
           theme: brand
@@ -19,5 +19,5 @@ config:
         -
           theme: alt
           text: Github →
-          link: https://github.com/pengzhanbo/vuepress-theme-plume
+          link: https://github.com/watersupis
 ---

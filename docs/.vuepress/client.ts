@@ -7,6 +7,10 @@ import { defineClientConfig } from 'vuepress/client'
 // import CustomComponent from './theme/components/Custom.vue'
 
 // import './theme/styles/custom.css'
+import { h } from 'vue'
+import { Layout } from 'vuepress-theme-plume/client'
+import PostMeta from './components/PostMeta.vue'
+import DocLinkCard from './components/DocLinkCard.vue'
 
 export default defineClientConfig({
   enhance({ app }) {
@@ -18,5 +22,12 @@ export default defineClientConfig({
 
     // your custom components
     // app.component('CustomComponent', CustomComponent)
+    // app.component('PostMeta', PostMeta)
+    app.component('DocLinkCard', DocLinkCard)
+  },
+  layouts: {
+    Layout: () => h(Layout, null, {
+      'doc-meta-after': () => h(PostMeta),
+    }),
   },
 })

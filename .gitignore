@@ -1,1 +1,5 @@
+build.bat
+start.bat
+git-auto.ps1
 docs/.vuepress/.*
+docs/.obsidian

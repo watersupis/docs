@@ -9,6 +9,7 @@
  * 特别的，请不要在两个配置文件中重复配置相同的项，当前文件的配置项会被覆盖
  */
 
+import { fileURLToPath } from 'node:url'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
@@ -24,7 +25,15 @@ export default defineUserConfig({
     ['link', { rel: 'icon', type: 'image/png', href: 'https://theme-plume.vuejs.press/favicon-32x32.png' }],
   ],
 
-  bundler: viteBundler(),
+  bundler: viteBundler({
+    viteOptions: {
+      resolve: {
+        alias: {
+          'vuepress-theme-plume/features/RepoCard.vue': fileURLToPath(new URL('./components/RepoCard.vue', import.meta.url)),
+        },
+      },
+    },
+  }),
   shouldPrefetch: false, // 站点较大，页面数量较多时，不建议启用
 
   theme: plumeTheme({
@@ -90,7 +99,7 @@ export default defineUserConfig({
      * markdown
      * @see https://theme-plume.vuejs.press/config/markdown/
      */
-    // markdown: {
+    markdown: {
     //   abbr: true,         // 启用 abbr 语法  *[label]: content
     //   annotation: true,   // 启用 annotation 语法  [+label]: content
     //   pdf: true,          // 启用 PDF 嵌入 @[pdf](/xxx.pdf)
@@ -100,7 +109,7 @@ export default defineUserConfig({
     //   youtube: true,      // 启用嵌入 youtube视频 语法 @[youtube](video_id)
     //   artPlayer: true,    // 启用嵌入 artPlayer 本地视频 语法 @[artPlayer](url)
     //   audioReader: true,  // 启用嵌入音频朗读功能 语法 @[audioReader](url)
-    //   icon: { provider: 'iconify' },        // 启用内置图标语法  ::icon-name::
+      icon: { provider: 'iconify' },        // 启用内置图标语法  ::icon-name::
     //   table: true,        // 启用表格增强容器语法 ::: table
     //   codepen: true,      // 启用嵌入 codepen 语法 @[codepen](user/slash)
     //   replit: true,       // 启用嵌入 replit 语法 @[replit](user/repl-name)
@@ -130,7 +139,7 @@ export default defineUserConfig({
     //   },
     //   include: true,      // 在 Markdown 文件中导入其他 markdown 文件内容
     //   imageSize: 'local', // 启用 自动填充 图片宽高属性，避免页面抖动
-    // },
+    },
 
     /**
      * 水印
